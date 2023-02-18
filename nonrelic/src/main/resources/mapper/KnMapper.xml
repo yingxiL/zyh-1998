@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.knowledge.mapper.KnMapper">
+    <select id="select" resultType="com.demo.knowledge.entity.Knowledge">
+        select * from knowledge
+    </select>
+    <select id="select1" resultType="com.demo.knowledge.entity.Knowledge">
+        select * from knowledge limit #{pageNo},#{pageSize}
+    </select>
+    <select id="findById" resultType="com.demo.knowledge.entity.Knowledge">
+        select * from knowledge where k_id=#{k_id}
+    </select>
+    <insert id="add" parameterType="com.demo.knowledge.entity.Knowledge">
+        insert into knowledge (id,name,name1,text,text1)
+        values (#{id},#{name},#{name1},#{text},#{text1})
+    </insert>
+    <update id="update" parameterType="com.demo.knowledge.entity.Knowledge">
+        update knowledge set name=#{name},name1=#{name1},text=#{text},text1=#{text1}
+        where k_id=#{k_id}
+    </update>
+    <delete id="delete" parameterType="com.demo.knowledge.entity.Knowledge">
+        delete from knowledge where k_id=#{k_id}
+    </delete>
+</mapper>

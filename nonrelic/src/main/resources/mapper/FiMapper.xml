@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.figure.mapper.FiMapper">
+    <select id="select" resultType="com.demo.figure.entity.Figure">
+        select * from figure limit #{pageNo},#{pageSize}
+    </select>
+    <select id="findById" resultType="com.demo.figure.entity.Figure">
+        select * from figure where f_id=#{f_id}
+    </select>
+    <insert id="add" parameterType="com.demo.figure.entity.Figure">
+        insert into figure (n_name,n_type,f_name,f_age,f_text,adr)
+        values (#{n_name},#{n_type},#{f_name},#{f_age},#{f_text},#{adr})
+    </insert>
+    <update id="update" parameterType="com.demo.figure.entity.Figure">
+        update figure set n_name=#{n_name},n_type=#{n_type},f_name=#{f_name},f_age=#{f_age},
+        f_text=#{f_text},adr=#{adr}
+        where f_id=#{f_id}
+    </update>
+    <delete id="delete" parameterType="com.demo.figure.entity.Figure">
+        delete from figure where f_id=#{f_id}
+    </delete>
+</mapper>

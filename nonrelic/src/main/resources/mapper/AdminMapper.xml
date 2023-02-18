@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.admin.mapper.AdminMapper">
+    <select id="login1" resultType="com.demo.admin.entity.Sadmin">
+        select * from sadmin where s_account=#{s_account} and s_pwd=#{s_pwd}
+    </select>
+    <select id="login2" resultType="com.demo.admin.entity.Vadmin">
+        select * from vadmin where v_account=#{v_account},v_pwd=#{v_pwd}
+    </select>
+    <select id="select1" resultType="com.demo.admin.entity.Sadmin">
+        select * from sadmin limit #{pageNo},#{pageSize}
+    </select>
+    <select id="select" resultType="com.demo.admin.entity.Vadmin">
+        select * from vadmin limit #{pageNo},#{pageSize}
+    </select>
+    <select id="findById1" resultType="com.demo.admin.entity.Sadmin">
+        select * from sadmin where s_id=#{s_id}
+    </select>
+    <select id="findById2" resultType="com.demo.admin.entity.Vadmin">
+        select * from vadmin where v_id=#{v_id}
+    </select>
+    <insert id="add1" parameterType="com.demo.admin.entity.Sadmin">
+        insert into sadmin (s_name,s_account,s_pwd,s_mb,s_adr,s_phone,s_card)
+        values (#{s_name},#{s_account},#{s_pwd},#{s_mb},#{s_adr},#{s_phone},#{s_card})
+    </insert>
+    <insert id="add2" parameterType="com.demo.admin.entity.Vadmin">
+        insert into vadmin (v_name,v_account,v_pwd,v_mb,v_adr,v_phone,v_card)
+        values (#{v_name},#{v_account},#{v_pwd},#{v_mb},#{v_adr},#{v_phone},#{v_card})
+    </insert>
+    <update id="update2" parameterType="com.demo.admin.entity.Vadmin">
+        update vadmin set v_name=#{v_name},v_account=#{v_account},v_pwd=#{v_pwd},v_mb=#{v_mb},
+        v_adr=#{v_adr},v_phone=#{v_phone},v_card=#{v_card}
+        where v_id=#{v_id}
+    </update>
+    <update id="update1" parameterType="com.demo.admin.entity.Vadmin">
+        update sadmin set s_name=#{s_name},s_account=#{s_account},s_pwd=#{s_pwd},s_mb=#{s_mb},
+        s_adr=#{s_adr},s_phone=#{s_phone},s_card=#{s_card}
+        where s_id=#{s_id}
+    </update>
+    <delete id="delete1" parameterType="com.demo.admin.entity.Sadmin">
+        delete from sadmin where s_id=#{s_id}
+    </delete>
+    <delete id="delete2" parameterType="com.demo.admin.entity.Vadmin">
+        delete from vadmin where v_id=#{v_id}
+    </delete>
+</mapper>

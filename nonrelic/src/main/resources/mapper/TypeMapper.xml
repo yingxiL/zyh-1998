@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.type.mapper.TypeMapper">
+    <select id="select" resultType="com.demo.type.entity.Type">
+        select * from type limit #{pageNo},#{pageSize}
+    </select>
+    <select id="findById" resultType="com.demo.type.entity.Type">
+        select * from type where id=#{id}
+    </select>
+    <insert id="add" parameterType="com.demo.type.entity.Type">
+        insert into type (c_id,c_no,c_name,c_class,c_type,c_time,c_unit)
+        values (#{c_id},#{c_no},#{c_name},#{c_class},#{c_type},#{c_time},#{c_unit})
+    </insert>
+    <update id="update" parameterType="com.demo.type.entity.Type">
+        update type set c_id=#{c_id},c_no=#{c_no},c_name=#{c_name},c_class=#{c_class},c_type=#{c_type},
+        c_time=#{c_time},c_unit=#{c_unit}
+        where id=#{id}
+    </update>
+    <delete id="del" parameterType="com.demo.type.entity.Type">
+        delete from type where id=#{id}
+    </delete>
+</mapper>

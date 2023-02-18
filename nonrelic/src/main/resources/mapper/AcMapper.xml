@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.activity.mapper.AcMapper">
+    <select id="select" resultType="com.demo.activity.entity.Activity">
+        select * from activity
+    </select>
+    <select id="findById" resultType="com.demo.activity.entity.Activity">
+        select * from activity where id=#{id}
+    </select>
+    <insert id="add" parameterType="com.demo.activity.entity.Activity">
+        insert into activity (title3,text1)
+        values (#{title3},#{text1})
+    </insert>
+    <update id="update" parameterType="com.demo.activity.entity.Activity">
+        update activity set title3=#{title3},text1=#{text1}
+        where id=#{id}
+    </update>
+    <delete id="delete" parameterType="com.demo.activity.entity.Activity">
+        delete from activity where id=#{id}
+    </delete>
+</mapper>

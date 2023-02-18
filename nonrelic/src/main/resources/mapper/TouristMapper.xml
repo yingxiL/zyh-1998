@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.tourist.mapper.TouristMapper">
+    <select id="select" resultType="com.demo.tourist.entity.Tourist">
+        select * from tourist
+    </select>
+    <select id="select1" resultType="com.demo.tourist.entity.Tourist">
+        select * from tourist limit #{pageNo},#{pageSize}
+    </select>
+    <select id="findById" resultType="com.demo.tourist.entity.Tourist">
+        select * from tourist where t_id=#{t_id}
+    </select>
+    <insert id="add" parameterType="com.demo.tourist.entity.Tourist">
+        insert into tourist (t_name,t_age,t_mb,t_phone,t_card,t_adr)
+        values (#{t_name},#{t_age},#{t_mb},#{t_phone},#{t_card},#{t_adr})
+    </insert>
+    <update id="update" parameterType="com.demo.tourist.entity.Tourist">
+        update tourist set t_name=#{t_name},t_age=#{t_age},t_mb=#{t_mb},t_phone=#{t_phone},t_card=#{t_card},t_adr=#{t_adr}
+        where t_id=#{t_id}
+    </update>
+    <delete id="delete" parameterType="com.demo.tourist.entity.Tourist">
+        delete from tourist where t_id=#{t_id}
+    </delete>
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.project.mapper.ProjectMapper">
+    <select id="select" resultType="com.demo.project.entity.Project">
+        select * from project
+        <where>
+            <if test="p_name!=null and p_name!=''">
+                and p_name like '%${p_name}%'
+            </if>
+        </where>
+    </select>
+    <select id="select1" resultType="com.demo.project.entity.Project">
+        select * from project limit #{pageNo},#{pageSize}
+    </select>
+    <select id="findById" resultType="com.demo.project.entity.Project">
+        select * from project where p_id=#{p_id}
+    </select>
+    <insert id="add" parameterType="com.demo.project.entity.Project">
+        insert into project (p_name,p_profile)
+        values (#{p_name},#{p_profile})
+    </insert>
+    <update id="update" parameterType="com.demo.project.entity.Project">
+        update project set p_name=#{p_name},p_profile=#{p_profile}
+        where p_id=#{p_id}
+    </update>
+    <delete id="delete" parameterType="com.demo.project.entity.Project">
+        delete from project where p_id=#{p_id}
+    </delete>
+</mapper>
